@@ -19,7 +19,7 @@ from sweepai.core.entities import FileChangeRequest, NoFilesException, Snippet
 from sweepai.core.sweep_bot import SweepBot
 from sweepai.handlers.on_review import get_pr_diffs
 from sweepai.utils.chat_logger import ChatLogger
-from sweepai.utils.config.server import GITHUB_BOT_USERNAME, OPENAI_API_BASE, PREFIX, OPENAI_API_KEY, GITHUB_BOT_TOKEN
+from sweepai.utils.config.server import GITHUB_BOT_USERNAME, PREFIX, OPENAI_API_KEY, GITHUB_BOT_TOKEN
 from sweepai.utils.event_logger import posthog
 from sweepai.utils.github_utils import (
     get_github_client,
@@ -29,7 +29,6 @@ from sweepai.utils.prompt_constructor import HumanMessageCommentPrompt
 
 github_access_token = GITHUB_BOT_TOKEN
 openai.api_key = OPENAI_API_KEY
-openai.api_base = OPENAI_API_BASE
 
 num_of_snippets_to_query = 30
 total_number_of_snippet_tokens = 15_000

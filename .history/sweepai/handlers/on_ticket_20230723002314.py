@@ -19,7 +19,7 @@ from sweepai.handlers.on_comment import on_comment
 from sweepai.handlers.on_review import review_pr
 from sweepai.utils.chat_logger import ChatLogger, discord_log_error
 from sweepai.utils.config.client import SweepConfig
-from sweepai.utils.config.server import OPENAI_API_BASE, PREFIX, DB_MODAL_INST_NAME, UTILS_MODAL_INST_NAME, OPENAI_API_KEY, \
+from sweepai.utils.config.server import PREFIX, DB_MODAL_INST_NAME, UTILS_MODAL_INST_NAME, OPENAI_API_KEY, \
     GITHUB_BOT_TOKEN, \
     GITHUB_BOT_USERNAME
 from sweepai.utils.event_logger import posthog
@@ -28,7 +28,6 @@ from sweepai.utils.prompt_constructor import HumanMessagePrompt
 
 github_access_token = GITHUB_BOT_TOKEN
 openai.api_key = OPENAI_API_KEY
-openai.api_base = OPENAI_API_BASE
 
 update_index = modal.Function.lookup(DB_MODAL_INST_NAME, "update_index")
 

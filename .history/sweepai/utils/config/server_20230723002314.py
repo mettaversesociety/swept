@@ -59,7 +59,6 @@ gha_enabled: False
 
 # goes under Modal 'openai-secret' secret name
 OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY')
-OPENAI_API_BASE = os.environ.get('OPENAI_API_BASE')
 OPENAI_DO_HAVE_32K_MODEL_ACCESS = os.environ.get('OPENAI_DO_HAVE_32K_MODEL_ACCESS', 'true').lower() == 'true'
 
 # goes under Modal 'slack' secret name

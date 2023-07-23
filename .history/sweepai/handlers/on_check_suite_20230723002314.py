@@ -12,8 +12,6 @@ from sweepai.utils.config.client import SweepConfig, get_gha_enabled
 from sweepai.utils.github_utils import get_github_client, get_token
 
 openai.api_key = os.environ.get("OPENAI_API_KEY")
-openai
-openai.api_base = os.environ.get("OPENAI_API_BASE")
 
 
 def download_logs(repo_full_name: str, run_id: int, installation_id: int):
