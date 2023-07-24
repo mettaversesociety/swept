@@ -86,4 +86,4 @@ POSTHOG_API_KEY = os.environ.get('POSTHOG_API_KEY')
 # goes under Modal 'highlight' secret name (optional, can leave env var blank)
 HIGHLIGHT_API_KEY = os.environ.get('HIGHLIGHT_API_KEY')
 
-SECONDARY_MODEL = "gpt-3.5-turbo-16k"
+SECONDARY_MODEL = "gpt-3.5-turbo-16k-0613"

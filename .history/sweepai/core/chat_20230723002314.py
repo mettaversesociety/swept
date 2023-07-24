@@ -21,17 +21,22 @@ from sweepai.utils.prompt_constructor import HumanMessagePrompt
 # TODO: combine anthropic and openai
 
 AnthropicModel = (
-        # Literal["claude-v2-100k"]
+        Literal["claude-v1"]
+        | Literal["claude-v1.3-100k"]
+        | Literal["claude-instant-v1.1-100k"]
 )
-OpenAIModel = Literal["gpt-3.5-turbo"] | Literal["gpt-4"] | Literal["gpt-4-0613"] | Literal["gpt-3.5-turbo-16k"] | Literal["gpt-4-32k"] | Literal["gpt-4-32k-poe"] | Literal["claude-v2-100k"]
+OpenAIModel = Literal["gpt-3.5-turbo"] | Literal["gpt-4"] | Literal["gpt-4-0613"] | Literal["gpt-3.5-turbo-16k-0613"] | Literal["gpt-4-32k"] | Literal["gpt-4-32k-0613"]
 
 ChatModel = OpenAIModel | AnthropicModel
 model_to_max_tokens = {
     "gpt-3.5-turbo": 4096,
     "gpt-4": 8192,
-    "claude-v2-100k": 100000,
-    "gpt-3.5-turbo-16k": 16000,
-    "gpt-4-32k-poe": 32000,
+    "gpt-4-0613": 8192,
+    "claude-v1": 9000,
+    "claude-v1.3-100k": 100000,
+    "claude-instant-v1.3-100k": 100000,
+    "gpt-3.5-turbo-16k-0613": 16000,
+    "gpt-4-32k-0613": 32000,
     "gpt-4-32k": 32000,
 
 }
@@ -59,7 +64,7 @@ class ChatGPT(BaseModel):
         )
     ]
     prev_message_states: list[list[Message]] = []
-    model: ChatModel = "gpt-4-32k" if OPENAI_DO_HAVE_32K_MODEL_ACCESS else "gpt-4"
+    model: ChatModel = "gpt-4-32k-0613" if OPENAI_DO_HAVE_32K_MODEL_ACCESS else "gpt-4-0613"
     human_message: HumanMessagePrompt | None = None
     file_change_paths = []
     chat_logger: ChatLogger | None
@@ -185,9 +190,9 @@ class ChatGPT(BaseModel):
                 model = model or self.model
                 logger.warning(f"{tickets_count} tickets found in MongoDB, using {model}")
             else:
-                model = "gpt-3.5-turbo-16k"
+                model = "gpt-3.5-turbo-16k-0613"
         else:
-            model = "gpt-3.5-turbo-16k"
+            model = "gpt-3.5-turbo-16k-0613"
 
         count_tokens = modal.Function.lookup(UTILS_MODAL_INST_NAME, "Tiktoken.count")
         messages_length = sum(
@@ -207,8 +212,8 @@ class ChatGPT(BaseModel):
         logger.info(f"Input to call openai:\n{messages_raw}")
 
         gpt_4_buffer = 800
-        if int(messages_length) + gpt_4_buffer < 6000 and model == "gpt-4-32k":
-            model = "gpt-4"
+        if int(messages_length) + gpt_4_buffer < 6000 and model == "gpt-4-32k-0613":
+            model = "gpt-4-0613"
             max_tokens = model_to_max_tokens[model] - int(
                 messages_length) - gpt_4_buffer  # this is for the function tokens
         if "gpt-4" in model:

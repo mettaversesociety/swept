@@ -22,8 +22,8 @@ tiktoken_volume = modal.SharedVolume().persist("tiktoken-models")
     secret=modal.Secret.from_dict({"TIKTOKEN_CACHE_DIR": TIKTOKEN_CACHE_DIR})
 )
 class Tiktoken:
-    openai_models = ["gpt-3.5-turbo", "gpt-4", "gpt-4-32k", "gpt-4-32k-poe"]
-    anthropic_models = ["claude-v1", "claude-2-100k", "claude-instant-100k"]
+    openai_models = ["gpt-3.5-turbo", "gpt-4", "gpt-4-32k", "gpt-4-32k-0613"]
+    anthropic_models = ["claude-v1", "claude-v1.3-100k", "claude-instant-v1.3-100k"]
     models = openai_models + anthropic_models
 
     def __enter__(self):
