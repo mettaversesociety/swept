@@ -46,15 +46,21 @@ See highlights at https://docs.sweep.dev/examples.
 * 🎊 New: Sweep Chat, a local interface for Sweep (see below)
 * 🎊 New: Enhanced file handling with streaming logic in modify_file, allowing for larger files to be processed.
 
-## 🚀 Getting Started
+## 🚀 Getting Started with Sweep Github App
 
-### ✨ Sweep Github App
-Setting up Sweep is as simple as adding the GitHub bot to a repo, then creating an issue for the bot to address. Here are the steps to get started:
+This guide will walk you through the process of deploying the Sweep Github App in your repository.
 
-1. Add the [Sweep GitHub app](https://github.com/apps/sweep-ai) to your desired repos
-2. Read about [recipes](docs/Recipes.md) for best use cases.
-2. Create a new issue in your repo. The issue should describe the problem or feature you want Sweep to address. For example, you could write "Sweep: In sweepai/app/ui.py use an os-agnostic temp directory"
-3. Respond with a message like "Sweep: use a different package instead" to have Sweep retry the issue or pull request. You can also comment on the code for minor changes! Remember to put the "Sweep:" prefix.
+## Setting up Sweep Github App
+
+1. Navigate to the [Sweep GitHub app](https://github.com/apps/sweep-ai) page.
+2. Click on 'Install' button.
+3. Choose the repositories where you want to add the Sweep app.
+4. Click on 'Install' to finalize the installation.
+
+## Using Sweep Github App
+
+1. Create a new issue in your repository. The issue should describe the problem or feature you want Sweep to address. For example, you could write "Sweep: In sweepai/app/ui.py use an os-agnostic temp directory"
+2. Respond with a message like "Sweep: use a different package instead" to have Sweep retry the issue or pull request. You can also comment on the code for minor changes! Remember to put the "Sweep:" prefix.
    - 💡 Hint: commenting "revert" reverts all edits in a file.
 
 We support all languages GPT4 supports, including Python, Typescript, Rust, Go, Java, C# and C++.
